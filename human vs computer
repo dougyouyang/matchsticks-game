@@ -1,0 +1,161 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+    int n, m;
+    int x;
+    int turn = 2;
+    int counter = 0;
+    cin >> n;
+
+
+    if (n%4 != 0){
+
+        cout << n%4 << endl;
+        cout << n-n%4 << " left" << endl;
+        n = n-n%4;
+
+        while (counter < n){
+            cout << "|";
+            counter++;
+        }
+        cout << endl;
+        counter = 0;
+
+
+        do
+        {
+            if (n == 0){
+                break;
+            }
+
+            cout << "please choose a number you want to take from 1 to 3" << endl;
+            cin >> m;
+
+            while (m!=1 && m!=2 && m!=3 || m > n){
+                cout << "please try again" << endl;
+                cin >> m;
+            }
+
+            n = n-m;
+            cout << n << " left" << endl;
+
+            while (counter < n){
+                cout << "|";
+                counter++;
+            }
+            cout << endl;
+            counter = 0;
+
+            turn = 3-turn;
+
+            if (n == 0){
+                break;
+            }
+
+
+            cout << 4-m << endl;
+            cout << n-(4-m) << " left" << endl;
+            n = n-(4-m);
+
+            while (counter < n){
+                cout << "|";
+                counter++;
+            }
+            cout << endl;
+            counter = 0;
+
+            turn = 3-turn;
+        }
+        while (n > 0);
+    }
+
+    else {
+        srand (time(NULL));
+        x = rand()%3+1;
+
+        cout << x << endl;
+        cout << n-x << " left" << endl;
+        n = n-x;
+
+        while (counter < n){
+                cout << "|";
+                counter++;
+            }
+            cout << endl;
+            counter = 0;
+
+        do
+        {
+            srand (time(NULL));
+            x = rand()%3+1;
+
+            cout << "please choose a number you want to take from 1 to 3" << endl;
+            cin >> m;
+
+            while (m!=1 && m!=2 && m!=3 || m > n){
+                cout << "please try again" << endl;
+                cin >> m;
+            }
+
+            n = n-m;
+            cout << n << " left" << endl;
+
+            while (counter < n){
+                cout << "|";
+                counter++;
+            }
+            cout << endl;
+            counter = 0;
+
+            turn = 3-turn;
+
+            if (n == 0){
+                break;
+            }
+
+            if (n%4 < 4 && n%4 != 0){
+                cout << n%4 << endl;
+                cout << n-(n%4) << " left" << endl;
+
+                while (counter < n){
+                    cout << "|";
+                    counter++;
+                }
+                cout << endl;
+                counter = 0;
+
+                n = n-n%4;
+            }
+            else {
+                cout << x << endl;
+                cout << n-x << " left" << endl;
+                n = n-x;
+
+                while (counter < n){
+                    cout << "|";
+                    counter++;
+                }
+                cout << endl;
+                counter = 0;
+            }
+
+            turn = 3-turn;
+        }
+        while (n > 0);
+    }
+
+
+        if (turn == 2){
+            cout << "computer wins" << endl;
+        }
+        else {
+            cout << "you win" << endl;
+        }
+
+    return 0;
+}
